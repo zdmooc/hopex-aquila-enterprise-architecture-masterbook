@@ -79,7 +79,13 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - Master/Reference Data, source of truth, APIs/events/batch/CDC et current/transition/target
 - modèle MayaBank avec 12 matrices, 12 vues, 24 labs et 40 questions corrigées
 
-### Partie X — Technology & Infrastructure Architecture
+### Partie X — Technology & Infrastructure Architecture ✅
+- [Ouvrir la Partie X](10-technology-infrastructure-architecture/README.md)
+- 13 chapitres : catalogue technologique, platform services, compute/OpenShift/cloud, réseau et stockage
+- HA/DR, security/identity/secrets, observability/SRE/capacity, lifecycle/IT-Pedia et current/transition/target
+- modèle MayaBank avec 9 technology domains, 8 platform services, 12 matrices et 12 vues
+- GreenOps, 24 labs, 40 questions corrigées et sources publiques séparées des recommandations
+
 ### Partie XI — Relationships, Diagrams, Matrices & Views
 ### Partie XII — Enterprise Cartography & Dependency Analysis
 ### Partie XIII — IT Business Management & Application Portfolio
