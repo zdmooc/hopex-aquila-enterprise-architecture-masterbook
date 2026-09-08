@@ -34,7 +34,12 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - standard vs custom metamodel + MetaStudio + introspection GraphQL
 - modèle canonique MayaBank, 12 labs et 30 questions de contrôle
 
-### Partie III — UI, Navigation, Objects, Properties & Workspaces
+### Partie III — UI, Navigation, Objects, Properties & Workspaces ✅
+- [Ouvrir la Partie III](03-ui-navigation-workspaces/README.md)
+- Web Front-End, workspaces/personas, search-before-create, fiches objets et propriétés
+- relations, listes/filtres, diagrammes/matrices, collaboration et validation
+- playbook MayaBank, **15 labs** et **30 questions corrigées**
+
 ### Partie IV — HOPEX IT Architecture
 ### Partie V — Business Architecture
 ### Partie VI — Capability Architecture
