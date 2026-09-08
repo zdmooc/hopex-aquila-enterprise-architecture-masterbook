@@ -58,7 +58,13 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - heatmaps + mappings capability↔applications/data/technologies/initiatives
 - scénarios, priorisation, capability roadmaps, BIAN/MayaBank + 20 labs et 30 questions corrigées
 
-### Partie VII — Business Process Analysis
+### Partie VII — Business Process Analysis ✅
+- [Ouvrir la Partie VII](07-business-process-analysis/README.md)
+- 13 chapitres : process architecture, BPMN 2.0, governance lifecycle, risks/controls et performance
+- mappings process↔capability/organization/applications/data/risks/controls/initiatives + gap/impact/bottleneck analysis
+- process mining, Simulation Engine, frontière HOPEX↔Camunda/Pega/runtime BPM et repository blueprint MayaBank
+- modèle MayaBank Instant Payment end-to-end + 24 labs + 40 questions corrigées + mission playbook
+
 ### Partie VIII — Application Architecture
 ### Partie IX — Information & Data Architecture
 ### Partie X — Technology & Infrastructure Architecture
