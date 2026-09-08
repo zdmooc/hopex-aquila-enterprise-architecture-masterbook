@@ -86,7 +86,13 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - modèle MayaBank avec 9 technology domains, 8 platform services, 12 matrices et 12 vues
 - GreenOps, 24 labs, 40 questions corrigées et sources publiques séparées des recommandations
 
-### Partie XI — Relationships, Diagrams, Matrices & Views
+### Partie XI — Relationships, Diagrams, Matrices & Views ✅
+- [Ouvrir la Partie XI](11-relationships-diagrams-matrices-views/README.md)
+- 13 chapitres : relation semantics/evidence/quality, viewpoints, visual conventions et matrices/CRUD
+- filters/scopes/queries, heatmaps/current-target, impact/blast-radius views et view library
+- publication Hopex 360, audience design, gouvernance et Architecture Board patterns
+- modèle MayaBank avec 8 matrices détaillées, 12 vues, 24 labs et 40 questions corrigées
+
 ### Partie XII — Enterprise Cartography & Dependency Analysis
 ### Partie XIII — IT Business Management & Application Portfolio
 ### Partie XIV — IT Portfolio Management & Transformation Roadmaps
