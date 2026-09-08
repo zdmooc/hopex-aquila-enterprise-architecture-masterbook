@@ -27,7 +27,13 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - HOPEX ↔ ArchiMate ↔ TOGAF
 - MayaBank, 7 labs, 20 questions de contrôle et sources officielles
 
-### Partie II — Repository, Metamodel & Object Model
+### Partie II — Repository, Metamodel & Object Model ✅
+- [Ouvrir la Partie II](02-repository-metamodel/README.md)
+- MetaModel, MetaClass, MetaAttribute, MetaAssociation, MetaAssociationEnd
+- identité, clés, déduplication, hiérarchies et classifications
+- standard vs custom metamodel + MetaStudio + introspection GraphQL
+- modèle canonique MayaBank, 12 labs et 30 questions de contrôle
+
 ### Partie III — UI, Navigation, Objects, Properties & Workspaces
 ### Partie IV — HOPEX IT Architecture
 ### Partie V — Business Architecture
