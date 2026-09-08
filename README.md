@@ -52,7 +52,12 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - services, produits, process architecture, information, stakeholders et strategic alignment
 - assessments, gaps, roadmap + modèle MayaBank + 20 labs et 30 questions corrigées
 
-### Partie VI — Capability Architecture
+### Partie VI — Capability Architecture ✅
+- [Ouvrir la Partie VI](06-capability-architecture/README.md)
+- taxonomy L0/L1/L2/L3, decomposition, ownership, maturity et strategic importance
+- heatmaps + mappings capability↔applications/data/technologies/initiatives
+- scénarios, priorisation, capability roadmaps, BIAN/MayaBank + 20 labs et 30 questions corrigées
+
 ### Partie VII — Business Process Analysis
 ### Partie VIII — Application Architecture
 ### Partie IX — Information & Data Architecture
