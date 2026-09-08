@@ -36,11 +36,16 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 
 ### Partie III — UI, Navigation, Objects, Properties & Workspaces ✅
 - [Ouvrir la Partie III](03-ui-navigation-workspaces/README.md)
-- Web Front-End, workspaces/personas, search-before-create, fiches objets et propriétés
-- relations, listes/filtres, diagrammes/matrices, collaboration et validation
-- playbook MayaBank, **15 labs** et **30 questions corrigées**
+- Web Front-End, workspaces, search, object pages, properties et relationships
+- listes, filtres, diagrammes, matrices, favoris, collaboration et workflows
+- MayaBank Navigation Playbook, 15 labs et 30 questions de contrôle
 
-### Partie IV — HOPEX IT Architecture
+### Partie IV — HOPEX IT Architecture ✅
+- [Ouvrir la Partie IV](04-it-architecture/README.md)
+- applications, interfaces, flows, technologies, standards et deployment
+- lifecycle, obsolescence, dette, HA/DR, current/transition/target et impact analysis
+- roadmap IT + modèle MayaBank de référence + 20 labs et 30 questions de contrôle
+
 ### Partie V — Business Architecture
 ### Partie VI — Capability Architecture
 ### Partie VII — Business Process Analysis
