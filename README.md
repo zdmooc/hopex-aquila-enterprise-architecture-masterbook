@@ -65,7 +65,13 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - process mining, Simulation Engine, frontière HOPEX↔Camunda/Pega/runtime BPM et repository blueprint MayaBank
 - modèle MayaBank Instant Payment end-to-end + 24 labs + 40 questions corrigées + mission playbook
 
-### Partie VIII — Application Architecture
+### Partie VIII — Application Architecture ✅
+- [Ouvrir la Partie VIII](08-application-architecture/README.md)
+- 13 chapitres : catalogue, granularity, business alignment, interfaces, integration et dependency mapping
+- deployment, OpenShift/cloud, NFR, data responsibilities, lifecycle/obsolescence et current/transition/target
+- modèle MayaBank avec 12 applications de référence, 10 matrices, 10 vues, 24 labs et 40 questions corrigées
+- gouvernance, anti-patterns, mission playbook et sources publiques séparées des recommandations
+
 ### Partie IX — Information & Data Architecture
 ### Partie X — Technology & Infrastructure Architecture
 ### Partie XI — Relationships, Diagrams, Matrices & Views
