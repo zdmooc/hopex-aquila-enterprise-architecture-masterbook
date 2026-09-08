@@ -72,7 +72,13 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - modèle MayaBank avec 12 applications de référence, 10 matrices, 10 vues, 24 labs et 40 questions corrigées
 - gouvernance, anti-patterns, mission playbook et sources publiques séparées des recommandations
 
-### Partie IX — Information & Data Architecture
+### Partie IX — Information & Data Architecture ✅
+- [Ouvrir la Partie IX](09-information-data-architecture/README.md)
+- 13 chapitres : data domains, glossary, conceptual/logical/physical models, ownership et lifecycle
+- functional/technical lineage, data quality/observability, classification/privacy/retention et persistence patterns
+- Master/Reference Data, source of truth, APIs/events/batch/CDC et current/transition/target
+- modèle MayaBank avec 12 matrices, 12 vues, 24 labs et 40 questions corrigées
+
 ### Partie X — Technology & Infrastructure Architecture
 ### Partie XI — Relationships, Diagrams, Matrices & Views
 ### Partie XII — Enterprise Cartography & Dependency Analysis
