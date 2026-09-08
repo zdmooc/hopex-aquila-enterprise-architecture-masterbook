@@ -93,7 +93,13 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - publication Hopex 360, audience design, gouvernance et Architecture Board patterns
 - modèle MayaBank avec 8 matrices détaillées, 12 vues, 24 labs et 40 questions corrigées
 
-### Partie XII — Enterprise Cartography & Dependency Analysis
+### Partie XII — Enterprise Cartography & Dependency Analysis ✅
+- [Ouvrir la Partie XII](12-enterprise-cartography-dependency-analysis/README.md)
+- 13 chapitres : graph model/traversal, dependency taxonomy, critical paths, blast radius, cycles/hubs/bridges/SPOF
+- resilience/DR recovery chains, change/migration/decommission, enterprise domain federation et data/control dependencies
+- graph analytics avec frontière explicite Hopex vs méthodes génériques + sources Aquila 62.18.x vérifiées
+- modèle MayaBank avec 12 vues, 12 matrices, 6 impact scenarios, 24 labs et 40 questions corrigées
+
 ### Partie XIII — IT Business Management & Application Portfolio
 ### Partie XIV — IT Portfolio Management & Transformation Roadmaps
 ### Partie XV — Reports, Dashboards, Analysis & Decision Support
