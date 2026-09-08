@@ -46,7 +46,12 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 - lifecycle, obsolescence, dette, HA/DR, current/transition/target et impact analysis
 - roadmap IT + modèle MayaBank de référence + 20 labs et 30 questions de contrôle
 
-### Partie V — Business Architecture
+### Partie V — Business Architecture ✅
+- [Ouvrir la Partie V](05-business-architecture/README.md)
+- business/operating model, organisation, capabilities, value streams et customer journeys
+- services, produits, process architecture, information, stakeholders et strategic alignment
+- assessments, gaps, roadmap + modèle MayaBank + 20 labs et 30 questions corrigées
+
 ### Partie VI — Capability Architecture
 ### Partie VII — Business Process Analysis
 ### Partie VIII — Application Architecture
