@@ -20,30 +20,36 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 
 ## Programme — 24 parties
 
-1. HOPEX Aquila Foundations & Ecosystem
-2. Repository, Metamodel & Object Model
-3. UI, Navigation, Objects, Properties & Workspaces
-4. HOPEX IT Architecture
-5. Business Architecture
-6. Capability Architecture
-7. Business Process Analysis
-8. Application Architecture
-9. Information & Data Architecture
-10. Technology & Infrastructure Architecture
-11. Relationships, Diagrams, Matrices & Views
-12. Enterprise Cartography & Dependency Analysis
-13. IT Business Management & Application Portfolio
-14. IT Portfolio Management & Transformation Roadmaps
-15. Reports, Dashboards, Analysis & Decision Support
-16. Repository Governance & Data Quality
-17. Administration, Roles, Rights & Security
-18. Customization, Extensions & Metamodel Governance
-19. Import, Export & Data Exchange
-20. REST, GraphQL, ServiceNow, MCP & AI Integrations
-21. MayaBank Complete HOPEX Enterprise Model
-22. Hands-on Labs, Interview Cases & Operational Playbook
-23. English, Glossary & Question Bank
-24. Official Sources, Training/Certification Mapping & Final Audit
+### Partie I — HOPEX Aquila Foundations & Ecosystem ✅
+- [Ouvrir la Partie I](01-foundations/README.md)
+- baseline produit 62.18.x, Core/Web/API/GraphQL/MCP/ServiceNow
+- repository, personas, solutions, licences et training
+- HOPEX ↔ ArchiMate ↔ TOGAF
+- MayaBank, 7 labs, 20 questions de contrôle et sources officielles
+
+### Partie II — Repository, Metamodel & Object Model
+### Partie III — UI, Navigation, Objects, Properties & Workspaces
+### Partie IV — HOPEX IT Architecture
+### Partie V — Business Architecture
+### Partie VI — Capability Architecture
+### Partie VII — Business Process Analysis
+### Partie VIII — Application Architecture
+### Partie IX — Information & Data Architecture
+### Partie X — Technology & Infrastructure Architecture
+### Partie XI — Relationships, Diagrams, Matrices & Views
+### Partie XII — Enterprise Cartography & Dependency Analysis
+### Partie XIII — IT Business Management & Application Portfolio
+### Partie XIV — IT Portfolio Management & Transformation Roadmaps
+### Partie XV — Reports, Dashboards, Analysis & Decision Support
+### Partie XVI — Repository Governance & Data Quality
+### Partie XVII — Administration, Roles, Rights & Security
+### Partie XVIII — Customization, Extensions & Metamodel Governance
+### Partie XIX — Import, Export & Data Exchange
+### Partie XX — REST, GraphQL, ServiceNow, MCP & AI Integrations
+### Partie XXI — MayaBank Complete HOPEX Enterprise Model
+### Partie XXII — Hands-on Labs, Interview Cases & Operational Playbook
+### Partie XXIII — English, Glossary & Question Bank
+### Partie XXIV — Official Sources, Training/Certification Mapping & Final Audit
 
 ## Articulation avec ArchiMate
 
