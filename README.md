@@ -113,6 +113,16 @@ Les versions exactes sont documentées dans la Partie I et seront revérifiées 
 ### Partie XXIII — English, Glossary & Question Bank
 ### Partie XXIV — Official Sources, Training/Certification Mapping & Final Audit
 
+## Reprise ultérieure du masterbook
+
+Le programme est actuellement à **12 / 24 — 50 %**. La prochaine partie est la **Partie XIII**.
+
+Le plan détaillé des 12 parties restantes, les règles de reprise et la procédure Git sont conservés dans :
+
+- [ROADMAP — Parties XIII à XXIV](ROADMAP-REMAINING-12-PARTS.md)
+
+Un futur `SUIVANT` doit reprendre directement par la **Partie XIII — IT Business Management & Application Portfolio**.
+
 ## Articulation avec ArchiMate
 
 Le dépôt ArchiMate explique le **langage de modélisation** ; ce dépôt explique comment exploiter une **plateforme EAM** pour gouverner un référentiel vivant.
