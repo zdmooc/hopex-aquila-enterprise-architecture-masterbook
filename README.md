@@ -6,6 +6,14 @@ Ce dépôt est un masterbook pratique consacré à **HOPEX Aquila** et à son us
 
 Le cas fil rouge **MayaBank** représente une banque fictive qui modernise ses paiements, ses applications, ses données, son infrastructure et sa gouvernance d’architecture.
 
+## Accès rapide — missions Architecte Solution
+
+Pour les missions demandant **cartographie SI, architecture applicative, intégration/ESB/API, impact analysis, AS-IS/TO-BE et roadmaps**, utiliser l’index dédié :
+
+- [Mission Index — Architecte Solution / Logiciel](MISSION-SOLUTION-ARCHITECT-INDEX.md)
+
+Le HLD/LLD/UML applicatif détaillé reste volontairement dans les dépôts spécialistes, afin de ne pas confondre EAM et conception logicielle détaillée.
+
 ## Baseline produit vérifiée — septembre 2026
 
 - HOPEX Core Back-End Aquila 6.2 — branche 62.18.x.
