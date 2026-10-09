@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_MayaBank_KYC_Soluxan" targetNamespace="https://mayabank.example/reference/soluxan">
+  <bpmn:process id="Process_MayaBank_Onboarding" name="MayaBank — Entrée en relation Customer/KYC (référence)" isExecutable="false">
+    <bpmn:documentation>REFERENCE_ARCHITECTURE MayaBank / synthetic business process; NOT_CLIENT_APPROVED, NOT_RUNTIME_EXECUTED. Timeouts core are UNKNOWN until inquiry; never retry Customer creation blindly. Selfcare, Customer360 projection and production integration are outside the scope of this process.</bpmn:documentation>
+    <bpmn:startEvent id="Start_Prospect" name="Demande prospect"><bpmn:outgoing>F01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:task id="Task_Capture" name="Saisir le prospect"><bpmn:incoming>F01</bpmn:incoming><bpmn:outgoing>F02</bpmn:outgoing></bpmn:task>
+    <bpmn:task id="Task_Identity" name="Vérifier identité"><bpmn:incoming>F02</bpmn:incoming><bpmn:outgoing>F03</bpmn:outgoing></bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_Identity" name="Identité vérifiée ?"><bpmn:incoming>F03</bpmn:incoming><bpmn:outgoing>F04</bpmn:outgoing><bpmn:outgoing>F05</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:task id="Task_Profile" name="Compléter CDD / KYB"><bpmn:incoming>F04</bpmn:incoming><bpmn:outgoing>F07</bpmn:outgoing></bpmn:task>
+    <bpmn:task id="Task_Screening" name="Screening contrôlé"><bpmn:incoming>F07</bpmn:incoming><bpmn:outgoing>F08</bpmn:outgoing></bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_Screening" name="Résultat screening ?"><bpmn:incoming>F08</bpmn:incoming><bpmn:outgoing>F09</bpmn:outgoing><bpmn:outgoing>F10</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:task id="Task_Approve" name="Décision KYC APPROVED"><bpmn:incoming>F09</bpmn:incoming><bpmn:incoming>F12</bpmn:incoming><bpmn:outgoing>F15</bpmn:outgoing></bpmn:task>
+    <bpmn:task id="Task_Consent" name="Tracer consentements"><bpmn:incoming>F15</bpmn:incoming><bpmn:outgoing>F16</bpmn:outgoing></bpmn:task>
+    <bpmn:task id="Task_CreateCustomer" name="Créer Customer (clé stable)"><bpmn:incoming>F16</bpmn:incoming><bpmn:outgoing>F17</bpmn:outgoing></bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_Core" name="Réponse core ?"><bpmn:incoming>F17</bpmn:incoming><bpmn:outgoing>F18</bpmn:outgoing><bpmn:outgoing>F19</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_Created" name="Customer confirmé"><bpmn:incoming>F18</bpmn:incoming><bpmn:incoming>F21</bpmn:incoming></bpmn:endEvent>
+    <bpmn:task id="Task_Inquiry" name="Inquiry / réconciliation"><bpmn:incoming>F19</bpmn:incoming><bpmn:outgoing>F20</bpmn:outgoing></bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_Inquiry" name="Résultat inquiry ?"><bpmn:incoming>F20</bpmn:incoming><bpmn:outgoing>F21</bpmn:outgoing><bpmn:outgoing>F22</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:task id="Task_Repair" name="Case d&apos;exception (sans retry aveugle)"><bpmn:incoming>F22</bpmn:incoming><bpmn:outgoing>F23</bpmn:outgoing></bpmn:task>
+    <bpmn:endEvent id="End_Pending" name="En attente / exception"><bpmn:incoming>F06</bpmn:incoming><bpmn:incoming>F23</bpmn:incoming></bpmn:endEvent>
+    <bpmn:task id="Task_RequestInfo" name="Demander compléments"><bpmn:incoming>F05</bpmn:incoming><bpmn:incoming>F13</bpmn:incoming><bpmn:outgoing>F06</bpmn:outgoing></bpmn:task>
+    <bpmn:task id="Task_ManualReview" name="Revue humaine habilitée"><bpmn:incoming>F10</bpmn:incoming><bpmn:outgoing>F11</bpmn:outgoing></bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_Review" name="Décision reviewer ?"><bpmn:incoming>F11</bpmn:incoming><bpmn:outgoing>F12</bpmn:outgoing><bpmn:outgoing>F13</bpmn:outgoing><bpmn:outgoing>F14</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_Rejected" name="KYC rejeté"><bpmn:incoming>F14</bpmn:incoming></bpmn:endEvent>
+    <bpmn:sequenceFlow id="F01" sourceRef="Start_Prospect" targetRef="Task_Capture" name="start" />
+    <bpmn:sequenceFlow id="F02" sourceRef="Task_Capture" targetRef="Task_Identity" name="prospect enregistré" />
+    <bpmn:sequenceFlow id="F03" sourceRef="Task_Identity" targetRef="Gateway_Identity" name="vérification" />
+    <bpmn:sequenceFlow id="F04" sourceRef="Gateway_Identity" targetRef="Task_Profile" name="VERIFIED" />
+    <bpmn:sequenceFlow id="F05" sourceRef="Gateway_Identity" targetRef="Task_RequestInfo" name="UNRESOLVED" />
+    <bpmn:sequenceFlow id="F06" sourceRef="Task_RequestInfo" targetRef="End_Pending" name="attente preuve" />
+    <bpmn:sequenceFlow id="F07" sourceRef="Task_Profile" targetRef="Task_Screening" name="profil complet" />
+    <bpmn:sequenceFlow id="F08" sourceRef="Task_Screening" targetRef="Gateway_Screening" name="résultat" />
+    <bpmn:sequenceFlow id="F09" sourceRef="Gateway_Screening" targetRef="Task_Approve" name="CLEAR" />
+    <bpmn:sequenceFlow id="F10" sourceRef="Gateway_Screening" targetRef="Task_ManualReview" name="REVIEW" />
+    <bpmn:sequenceFlow id="F11" sourceRef="Task_ManualReview" targetRef="Gateway_Review" name="proposition décision" />
+    <bpmn:sequenceFlow id="F12" sourceRef="Gateway_Review" targetRef="Task_Approve" name="APPROVED" />
+    <bpmn:sequenceFlow id="F13" sourceRef="Gateway_Review" targetRef="Task_RequestInfo" name="MORE_INFORMATION" />
+    <bpmn:sequenceFlow id="F14" sourceRef="Gateway_Review" targetRef="End_Rejected" name="REJECTED" />
+    <bpmn:sequenceFlow id="F15" sourceRef="Task_Approve" targetRef="Task_Consent" name="KYC approuvé" />
+    <bpmn:sequenceFlow id="F16" sourceRef="Task_Consent" targetRef="Task_CreateCustomer" name="consentement tracé" />
+    <bpmn:sequenceFlow id="F17" sourceRef="Task_CreateCustomer" targetRef="Gateway_Core" name="creation intent" />
+    <bpmn:sequenceFlow id="F18" sourceRef="Gateway_Core" targetRef="End_Created" name="ACK_CONFIRMED" />
+    <bpmn:sequenceFlow id="F19" sourceRef="Gateway_Core" targetRef="Task_Inquiry" name="TIMEOUT_UNKNOWN" />
+    <bpmn:sequenceFlow id="F20" sourceRef="Task_Inquiry" targetRef="Gateway_Inquiry" name="statut interrogé" />
+    <bpmn:sequenceFlow id="F21" sourceRef="Gateway_Inquiry" targetRef="End_Created" name="CREATED_CONFIRMED" />
+    <bpmn:sequenceFlow id="F22" sourceRef="Gateway_Inquiry" targetRef="Task_Repair" name="UNKNOWN_AFTER_INQUIRY" />
+    <bpmn:sequenceFlow id="F23" sourceRef="Task_Repair" targetRef="End_Pending" name="reprise pilotée" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_CustomerKYC">
+    <bpmndi:BPMNPlane id="BPMNPlane_CustomerKYC" bpmnElement="Process_MayaBank_Onboarding">
+      <bpmndi:BPMNShape id="BPMNShape_Start_Prospect" bpmnElement="Start_Prospect"><dc:Bounds x="100" y="330" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_Capture" bpmnElement="Task_Capture"><dc:Bounds x="220" y="330" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_Identity" bpmnElement="Task_Identity"><dc:Bounds x="380" y="330" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_Identity" bpmnElement="Gateway_Identity"><dc:Bounds x="545" y="340" width="50" height="50" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_Profile" bpmnElement="Task_Profile"><dc:Bounds x="690" y="330" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_Screening" bpmnElement="Task_Screening"><dc:Bounds x="850" y="330" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_Screening" bpmnElement="Gateway_Screening"><dc:Bounds x="1020" y="340" width="50" height="50" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_Approve" bpmnElement="Task_Approve"><dc:Bounds x="1180" y="330" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_Consent" bpmnElement="Task_Consent"><dc:Bounds x="1340" y="330" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_CreateCustomer" bpmnElement="Task_CreateCustomer"><dc:Bounds x="1500" y="330" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_Core" bpmnElement="Gateway_Core"><dc:Bounds x="1665" y="340" width="50" height="50" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_End_Created" bpmnElement="End_Created"><dc:Bounds x="1960" y="315" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_Inquiry" bpmnElement="Task_Inquiry"><dc:Bounds x="1820" y="505" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_Inquiry" bpmnElement="Gateway_Inquiry"><dc:Bounds x="1985" y="515" width="50" height="50" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_Repair" bpmnElement="Task_Repair"><dc:Bounds x="2150" y="625" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_End_Pending" bpmnElement="End_Pending"><dc:Bounds x="2330" y="635" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_RequestInfo" bpmnElement="Task_RequestInfo"><dc:Bounds x="685" y="80" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_ManualReview" bpmnElement="Task_ManualReview"><dc:Bounds x="1180" y="80" width="130" height="75" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_Review" bpmnElement="Gateway_Review"><dc:Bounds x="1340" y="90" width="50" height="50" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_End_Rejected" bpmnElement="End_Rejected"><dc:Bounds x="1500" y="90" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_F01" bpmnElement="F01"><di:waypoint x="136" y="348"/><di:waypoint x="178" y="348"/><di:waypoint x="178" y="367.5"/><di:waypoint x="220" y="367.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F02" bpmnElement="F02"><di:waypoint x="350" y="367.5"/><di:waypoint x="377" y="367.5"/><di:waypoint x="377" y="282"/><di:waypoint x="353" y="282"/><di:waypoint x="353" y="367.5"/><di:waypoint x="380" y="367.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F03" bpmnElement="F03"><di:waypoint x="510" y="367.5"/><di:waypoint x="528" y="367.5"/><di:waypoint x="528" y="365"/><di:waypoint x="545" y="365"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F04" bpmnElement="F04"><di:waypoint x="595" y="365"/><di:waypoint x="643" y="365"/><di:waypoint x="643" y="367.5"/><di:waypoint x="690" y="367.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F05" bpmnElement="F05"><di:waypoint x="595" y="365"/><di:waypoint x="640" y="365"/><di:waypoint x="640" y="117.5"/><di:waypoint x="685" y="117.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F06" bpmnElement="F06"><di:waypoint x="815" y="117.5"/><di:waypoint x="1573" y="117.5"/><di:waypoint x="1573" y="653"/><di:waypoint x="2330" y="653"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F07" bpmnElement="F07"><di:waypoint x="820" y="367.5"/><di:waypoint x="847" y="367.5"/><di:waypoint x="847" y="282"/><di:waypoint x="823" y="282"/><di:waypoint x="823" y="367.5"/><di:waypoint x="850" y="367.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F08" bpmnElement="F08"><di:waypoint x="980" y="367.5"/><di:waypoint x="1000" y="367.5"/><di:waypoint x="1000" y="365"/><di:waypoint x="1020" y="365"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F09" bpmnElement="F09"><di:waypoint x="1070" y="365"/><di:waypoint x="1125" y="365"/><di:waypoint x="1125" y="367.5"/><di:waypoint x="1180" y="367.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F10" bpmnElement="F10"><di:waypoint x="1070" y="365"/><di:waypoint x="1125" y="365"/><di:waypoint x="1125" y="117.5"/><di:waypoint x="1180" y="117.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F11" bpmnElement="F11"><di:waypoint x="1310" y="117.5"/><di:waypoint x="1337" y="117.5"/><di:waypoint x="1337" y="32"/><di:waypoint x="1313" y="32"/><di:waypoint x="1313" y="115"/><di:waypoint x="1340" y="115"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F12" bpmnElement="F12"><di:waypoint x="1390" y="115"/><di:waypoint x="1417" y="115"/><di:waypoint x="1417" y="42"/><di:waypoint x="1153" y="42"/><di:waypoint x="1153" y="367.5"/><di:waypoint x="1180" y="367.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F13" bpmnElement="F13"><di:waypoint x="1390" y="115"/><di:waypoint x="1417" y="115"/><di:waypoint x="1417" y="32"/><di:waypoint x="658" y="32"/><di:waypoint x="658" y="117.5"/><di:waypoint x="685" y="117.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F14" bpmnElement="F14"><di:waypoint x="1390" y="115"/><di:waypoint x="1445" y="115"/><di:waypoint x="1445" y="108"/><di:waypoint x="1500" y="108"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F15" bpmnElement="F15"><di:waypoint x="1310" y="367.5"/><di:waypoint x="1337" y="367.5"/><di:waypoint x="1337" y="282"/><di:waypoint x="1313" y="282"/><di:waypoint x="1313" y="367.5"/><di:waypoint x="1340" y="367.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F16" bpmnElement="F16"><di:waypoint x="1470" y="367.5"/><di:waypoint x="1497" y="367.5"/><di:waypoint x="1497" y="282"/><di:waypoint x="1473" y="282"/><di:waypoint x="1473" y="367.5"/><di:waypoint x="1500" y="367.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F17" bpmnElement="F17"><di:waypoint x="1630" y="367.5"/><di:waypoint x="1648" y="367.5"/><di:waypoint x="1648" y="365"/><di:waypoint x="1665" y="365"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F18" bpmnElement="F18"><di:waypoint x="1715" y="365"/><di:waypoint x="1838" y="365"/><di:waypoint x="1838" y="333"/><di:waypoint x="1960" y="333"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F19" bpmnElement="F19"><di:waypoint x="1715" y="365"/><di:waypoint x="1768" y="365"/><di:waypoint x="1768" y="542.5"/><di:waypoint x="1820" y="542.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F20" bpmnElement="F20"><di:waypoint x="1950" y="542.5"/><di:waypoint x="1968" y="542.5"/><di:waypoint x="1968" y="540"/><di:waypoint x="1985" y="540"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F21" bpmnElement="F21"><di:waypoint x="2035" y="540"/><di:waypoint x="2062" y="540"/><di:waypoint x="2062" y="267"/><di:waypoint x="1933" y="267"/><di:waypoint x="1933" y="333"/><di:waypoint x="1960" y="333"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F22" bpmnElement="F22"><di:waypoint x="2035" y="540"/><di:waypoint x="2093" y="540"/><di:waypoint x="2093" y="662.5"/><di:waypoint x="2150" y="662.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_F23" bpmnElement="F23"><di:waypoint x="2280" y="662.5"/><di:waypoint x="2305" y="662.5"/><di:waypoint x="2305" y="653"/><di:waypoint x="2330" y="653"/></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
