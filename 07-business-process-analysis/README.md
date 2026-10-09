@@ -390,3 +390,16 @@ La Partie VII est considérée complète car elle fournit :
 - 24 labs ;
 - 40 questions corrigées ;
 - sources officielles séparées des recommandations pédagogiques.
+
+---
+
+## Complément BPMN formel — Soluxan S3 / Customer-KYC (09/10/2026)
+
+Le modèle **BPMN 2.0 non exécutable** du parcours Customer/KYC MayaBank complète le cas de paiement instantané déjà documenté ; il ne remplace pas les 13 chapitres et ne revendique aucun import HOPEX/Camunda.
+
+- [Fichier BPMN 2.0 avec BPMN DI](models/mayabank-customer-kyc-onboarding-soluxan-2026-10-09.bpmn)
+- [Matrice process/application/data/risks/controls + RACI/KPI](models/MAYABANK_CUSTOMER_KYC_BPMN_TRACEABILITY_2026-10-09.md)
+- [Dossier professionnel Customer/KYC](https://github.com/zdmooc/mayabank-customer-identity-kyc-digital-banking-architecture/blob/main/portfolio/SOLUXAN_S3_DOSSIER_ENTRETIEN_ARCHITECTE_SI_2026-10-09.md)
+
+**Vérifications** : intégrité structurelle et références DI contrôlées ; validation BPMN XSD et import dans un éditeur/HOPEX restent non réalisés. Usage référence/synthétique.
+
